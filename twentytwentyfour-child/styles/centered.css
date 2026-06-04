@@ -14,3 +14,11 @@
     width: 100%;
     z-index: 1;
 }
+
+/* simpleTOC */
+dd {
+  padding-left: 40%;
+  padding-top: unset;
+  padding-bottom: unset;
+  margin-top: unset;
+}
