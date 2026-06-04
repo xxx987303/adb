@@ -1,43 +1,11 @@
 <?php
 /**
- * new from 2026
+ * As is...
  */
+require_once __dir__ . '/functions_fb.php';
+require_once __dir__ . '/functions_adb_shortcodes.php';
+require_once __dir__ . '/functions_adb_no_posts.php';
 
-/**
- * The new page template is an empty page
- */
-add_filter('template_include', function($template) {
-    if (is_page()) {
-	//echo"<pre>";debug_print_backtrace(); die("template=$template\n");
-        return get_stylesheet_directory() . '/page-empty.php';
-    }
-    return $template;
-});
-
-/**
- * Remove posts, leave pages only
- */
-function remove_posts_menu() {
-    remove_menu_page('edit.php');
-}
-add_action('admin_menu', 'remove_posts_menu');
-
-/**
- * Remove posts, leave pages only
- */
-function remove_posts_from_admin_bar($wp_admin_bar) {
-    $wp_admin_bar->remove_node('new-post');
-}
-add_action('admin_bar_menu', 'remove_posts_from_admin_bar', 999);
-
-
-
-/**
- * As it was in 2024 ...
- */
-
-if (!defined('CLI_MODE')) define('CLI_MODE', true);
-//require_once __dir__ . '/functions_fb.php';
 if (!defined('PRODUCTION_MODE')) define('PRODUCTION_MODE', false);
 if (!defined('AFTER_LOGIN'))     define('AFTER_LOGIN', 'stat/'); // about/
 
@@ -92,8 +60,7 @@ if (!CLI_MODE) {
     add_filter( 'get_avatar', 'YB_get_avatar', 10, 5 );
     function YB_get_avatar( $avatar = '', $id_or_email, $size = 96, $default = '', $alt = '' ) {
         YB_message('entry');
-	if ($id_or_email instanceof WP_Comment) $id_or_email = $id_or_email->comment_author;
-        if (($id_or_email !== 1) && ($image = YB_get_template_file_uri("photos/$id_or_email.png", true))) {
+        if(0)if (($id_or_email !== 1) && ($image = YB_get_template_file_uri("photos/$id_or_email.png", true))) {
             $avatar = "<img alt='$alt' src='$image' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
         }
         YB_message("avatar $avatar");
@@ -180,9 +147,6 @@ function enqueue_custom_scripts() {
 
     // Modal iFrame
     wp_enqueue_script( 'custom-hover-script', YB_get_template_file_uri('js/custom_iframeModal.js'), array(), false, true );
-
-    // Make image highlights when the user hovers over the text link in the navigation block
-    // DONE in the shortcode wp_enqueue_script( 'custom-fb-script', YB_get_template_file_uri('js/custom_hover.js'), array(), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_custom_scripts' );
 

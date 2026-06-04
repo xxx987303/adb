@@ -62,5 +62,6 @@ img {
     text-align: center; /* Optional: Center the text inside the div */
     font-style: italic;
     font-size: smaller;
+    color:red;
     /*    font-weight: bold; */
 }

@@ -10,6 +10,8 @@ function YB_shortcode_hover_tooltips($atts, $content=null, $tag='' ) {
     static $codes = ['Александровского' => 'В 1910-20 годы это был Гофицкий район',];
     YB_message('entry');
     wp_enqueue_script('hover_tooltips', YB_get_template_file_uri("js/hover_tooltips.js"), []);
+    $reply = '????';
+/*
     YB_get_atts($atts, $tag, ['t'=>'']);
     foreach ($atts as $k=>$v) {
         if (preg_match('/^([ic]*)([0-9]*)$/', $k, $match)) {
@@ -27,6 +29,7 @@ function YB_shortcode_hover_tooltips($atts, $content=null, $tag='' ) {
         }
         $reply[] = "<a href='$img_src' data-fancybox='gallery' data-caption='$caption'>" . YB_get_thumbnail($atts['t'], $img_src, $caption) . "</a>";      
     }
+*/
     YB_message('exit');
     return join("\n",$reply);
 }
