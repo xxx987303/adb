@@ -1,0 +1,92 @@
+
+/* Front page heading image backgrounds ------------------------------------*/ 
+.wp-block-cover .has-background-dim:not([class*="-background-color"]),
+.wp-block-cover-image .has-background-dim:not([class*="-background-color"]),
+.wp-block-cover-image.has-background-dim:not([class*="-background-color"]),
+.wp-block-cover.has-background-dim:not([class*="-background-color"]) {
+    /* To be considered "transparent", "floralwhite", "cornsilk", "bisque"... */
+    background-color: floralwhite !important;
+}
+
+
+/* Front page big "big buttons" (images) --------------------------------------------*/
+.top_button {
+    font-weight: bold; 
+    text-decoration-style: solid;
+    text-align: center;
+}
+
+.wp-image-16,
+.wp-image-17,
+.wp-image-18,
+.wp-image-19,
+.wp-image-20,
+.wp-image-21,
+.wp-image-22,
+.wp-image-23,
+.wp-image-24,
+.wp-image-25,
+.wp-image-585,
+.wp-image-587,
+.wp-image-734,
+.wp-image-1184,
+.wp-image-dev,
+.top_button{
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all .1s ease-in;
+    opacity: 0.3;
+}
+
+.wp-image-16:hover,
+.wp-image-17:hover,
+.wp-image-18:hover,
+.wp-image-19:hover,
+.wp-image-20:hover,
+.wp-image-21:hover,
+.wp-image-22:hover,
+.wp-image-23:hover,
+.wp-image-24:hover,
+.wp-image-25:hover,
+.wp-image-585:hover,
+.wp-image-587:hover,
+.wp-image-734:hover,
+.wp-image-1184:hover,
+.wp-image-dev:hover,
+.top_button:hover{
+    filter: none;
+    opacity: 1;
+}
+
+/* Navigation block */
+.wp-block-navigation__container {
+    align-items: var(--navigation-layout-align,initial);
+/*  display: flex; */
+    display: block;
+    flex-direction: column;
+    flex-wrap: var(--navigation-layout-wrap,wrap);
+    justify-content: var(--navigation-layout-justify,initial);
+    list-style: none;
+    margin: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-left: 0;
+}
+
+/* Centered pair of images, one over another, e.g. to highlight "work in progress" */
+.centered-images {
+    position: relative;
+    display: inline-block;
+}
+.centered-images img:nth-child(1) {
+    width: 100%;
+}
+.centered-images img:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 1;
+}
