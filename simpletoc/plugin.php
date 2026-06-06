@@ -3,7 +3,7 @@
  * Plugin Name:   SimpleTOC - Table of Contents Block
  * Plugin URI:    https://marc.tv/simpletoc-wordpress-inhaltsverzeichnis-plugin-gutenberg/
  * Description:   SEO-friendly Table of Contents Gutenberg block. No JavaScript or CSS by default.
- * Version:       7.0.7
+ * Version:       7.0.10
  * Author:        Marc Tönsing
  * Author URI:    https://toensing.com
  * Text Domain:   simpletoc
@@ -150,7 +150,7 @@ add_filter(
 add_filter(
 	'block_type_metadata_settings',
 	function ( $settings, $metadata ) {
-	        if(0) if ( 'simpletoc/toc' === $metadata['name'] ) {
+		if ( 'simpletoc/toc' === $metadata['name'] ) {
 			$settings['attributes']['title_text']['default'] = __( 'Table of Contents', 'simpletoc' );
 		}
 
@@ -326,8 +326,7 @@ function get_empty_blocks_message( $is_backend, $attributes, $title_level, $alig
 		}
 
 		$html .= sprintf( '<h%d class="%s">%s</h%d>', $title_level, esc_attr( trim( 'simpletoc-title ' . $alignclass ) ), $title_text, $title_level );
-	        $html  = '';
-	        $html .= sprintf( '<p class="components-notice is-warning %s">%s %s</p>', $alignclass, $warning_text1, $warning_text2 );
+		$html .= sprintf( '<p class="components-notice is-warning %s">%s %s</p>', $alignclass, $warning_text1, $warning_text2 );
 
 		if ( $has_wrapper ) {
 			$html .= '</div>';
@@ -895,8 +894,7 @@ function add_hidden_markup_start( $html, $attributes, $itemcount, $alignclass ) 
 		$title_text   = $attributes['title_text'] ? esc_html( trim( $attributes['title_text'] ) ) : esc_html__( 'Table of Contents', 'simpletoc' );
 		$hidden_start = '<details class="simpletoc">
         <summary style="cursor: pointer;">' . $title_text . '</summary>';
-		//$html        .= $hidden_start;
-	        $title_text = $hidden_start;
+		$html        .= $hidden_start;
 	}
 
 	// If there are no items in the table of contents, return an empty string.
@@ -937,8 +935,7 @@ function add_accordion_start( $html, $attributes, $itemcount, $alignclass ) {
 	$is_accordion_enabled = $attributes['accordion'] || true === (bool) get_option( 'simpletoc_accordion_enabled', false );
 	$is_hidden_enabled    = $attributes['hidden'];
 	$title_text           = $attributes['title_text'] ? esc_html( trim( $attributes['title_text'] ) ) : esc_html__( 'Table of Contents', 'simpletoc' );
-        $title_text           = '';
-    
+
 	// Start and end HTML for accordion, if enabled.
 	$accordion_start = '';
 	if ( $is_accordion_enabled ) {
@@ -959,9 +956,8 @@ function add_accordion_start( $html, $attributes, $itemcount, $alignclass ) {
 		if ( ! empty( $alignclass ) ) {
 			$html_class .= " $alignclass";
 		}
-
 		$html = "<$title_tag class=\"$html_class\">$title_text</$title_tag>\n";
-                $html = ""; 
+	        $title_text = $html = "";
 	}
 
 	// If there are no items in the table of contents, return an empty string.
