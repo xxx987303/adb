@@ -1,3 +1,4 @@
+/*  No fancybox yet
 $(document).ready(function() {
     $('[data-fancybox]').fancybox( {
 	iframe: {
@@ -5,3 +6,4 @@ $(document).ready(function() {
 		   height: '80%' }}
     });
 });
+*/
