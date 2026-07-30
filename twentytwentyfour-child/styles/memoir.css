@@ -1,3 +1,27 @@
+#memoir-caption,
+.memoir-caption {
+/*  position: absolute; */
+    position: relative;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px 24px;
+    color: white;
+    background: rgba(0,0,0,.55);
+    font-size: 1.5em;
+    line-height: 1.5;
+    text-align: center;
+/*    z-index: 1000; */
+}
+
+figure, figcaption, .wp-block-image :where(figcaption) {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 
 .memoir-tooltip {
     position: relative;

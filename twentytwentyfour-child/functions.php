@@ -14,6 +14,38 @@ if (!defined('FORCE_AUTH'))      define('FORCE_AUTH',   PRODUCTION_MODE);// Forc
 if (!defined('TIDY_SOURCE'))     define('TIDY_SOURCE', !PRODUCTION_MODE);// Tidy source is not recommended for production
 
 /**
+ *   PhotoSwipe
+ **/
+function adb_enqueue_photoswipe() {
+    if (1) {
+	wp_enqueue_script('photoswipe',           get_stylesheet_directory_uri() . '/photoswipe/photoswipe.umd.min.js',         [],                      null, [] );
+	wp_enqueue_script('photoswipe-lightbox',  get_stylesheet_directory_uri() . '/photoswipe/photoswipe-lightbox.umd.min.js',['photoswipe'],          null, [] );
+    } else {
+	//wp_enqueue_script_module('photoswipe',           get_stylesheet_directory_uri() . '/photoswipe/photoswipe.esm.min.js',         [],                      null, [] );
+	//wp_enqueue_script_module('photoswipe-lightbox',  get_stylesheet_directory_uri() . '/photoswipe/photoswipe-lightbox.esm.min.js',['photoswipe'],          null, [] );
+	wp_enqueue_script_module('init-esm',       get_stylesheet_directory_uri() . '/photoswipe/init.esm.js',                   ['photoswipe-lightbox'], null, [] );
+    }
+    wp_enqueue_script('photoswipe-init',          get_stylesheet_directory_uri() . '/photoswipe/init.umd.js',                   ['photoswipe-lightbox'], null, [] );
+    wp_enqueue_style ('photoswipe-css',           get_stylesheet_directory_uri() . '/photoswipe/photoswipe.css');
+    
+    // echo __function__.' ended<br>';
+}
+// Commiting defeat...
+// Replaced by plugin, , AI help was interesting, but misleading...
+// add_action('wp_enqueue_scripts', 'adb_enqueue_photoswipe');
+
+/**
+ * Fix for the search
+ */
+add_filter( 'relevanssi_search_ok', function( $ok, $query ) {
+    if ( ! empty( $query->query_vars['s'] ) ) {
+        $ok = true;
+    }
+    return $ok;
+}, 10, 2 );
+
+
+/**
  * Add dev. comments
  * level might be debug or warn
  */
@@ -47,7 +79,8 @@ if (!function_exists('YB_message')) {
             else        { $YB_messages[] = $msg; }
             if ($textP == 'entry') { $YB_messages_indent .= $indent; }
         }
-        return "";
+$YB_messages = [];
+	return "";
     }
 }
 

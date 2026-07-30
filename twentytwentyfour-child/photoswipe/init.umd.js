@@ -1,6 +1,5 @@
 //
-// init.js
-// Uses PhotoSwipe UMD version
+// init.umd.js PhotoSwipe
 //
 
 // Remove multiple captions, if any
